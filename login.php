@@ -11,44 +11,10 @@ and available seats will be decremented by 1 (or no. of tickets that user books)
     require_once "dbconn.php";
     $city = $crud->getAllCities();
     $category = $crud->getAllCategories();
+    $event = $crud->getAllEvents();
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>       
-</head>
-<body>
-    <!-- create beautiful header and navbar alog with home ticket booked and logout details using css and html -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Event Management</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="bookedtickets.php">Ticket Booked</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="login.php">Logout</a>
-                  </li>
-                </ul>
-                </div>
-            </div>
-            </nav>
-    </header>
+<!-- Include header using php -->
+<?php include "header.php" ?>
     <!-- Create carousel -->
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
   <div class="carousel-indicators">
@@ -79,74 +45,26 @@ and available seats will be decremented by 1 (or no. of tickets that user books)
 <br>
 <main>
         <div class="container">
+            <!-- using while print row contain image card title and card description using event-->
             <div class="row">
-                <div class="col-sm">
+              <?php
+                  while($row = $event->fetch_assoc()){
+              ?>
+              
+              <div class="col-sm">
                     <div class="card" style="width: 18rem;">
-                        <img src="images/otw.jpg" class="card-img-top" alt="...">
+                        <img src="<?php echo $row['Image']; ?>" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Book Tickets</a>
+                            <h5 class="card-title"><?php echo $row['Title']; ?></h5>
+                            <p class="card-text"><?php echo $row['Description']; ?></p>
+                            <a href="booking.php?id=<?php echo $row['Show_id']; ?>" class="btn btn-primary">Book Ticket</a>
                         </div>
-                        </div>
+                    </div>
                 </div>
-                <div class="col-sm">
-                    <div class="card" style="width: 18rem;">
-                        <img src="images/cherry.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Book Tickets</a>
-                        </div>
-                        </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card" style="width: 18rem;">
-                        <img src="images/zsjl.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Book Tickets</a>
-                        </div>
-                        </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <div class="card" style="width: 18rem;">
-                        <img src="images/gvkpster.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Book Tickets</a>
-                        </div>
-                        </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card" style="width: 18rem;">
-                        <img src="images/tim.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Book Tickets</a>
-                        </div>
-                        </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card" style="width: 18rem;">
-                        <img src="images/blackwidow.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Book Tickets</a>
-                        </div>
-                        </div>
-                </div>
-            </div>
-        </div>
+                <?php
+                    }
+                ?>
+          <br> 
         <br>
     </main>    
     <br>
