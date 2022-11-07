@@ -1,4 +1,10 @@
 <?php session_start(); ?>
+<!-- session destroy after clicking logout button -->
+<?php if(isset($_POST['logout'])){
+    session_destroy();
+    header("Location: index.php");
+} ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,10 +35,13 @@
                     <a class="nav-link" href="bookedtickets.php">Ticket Booked</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" href="index.php"><?php echo $_SESSION['username']; ?></a>
+                    <a class="nav-link active" href="login.php"><?php echo $_SESSION['username']; ?></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" href="index.php">Logout</a>
+                    <form action="" method="post">
+                        <button type="submit" name="logout" class="nav-link active border=0">Logout</button>
+                    </form>
+                    <!-- <a class="nav-link active" href="index.php">Logout</a> -->
                   </li>
                 </ul>
                 </div>
