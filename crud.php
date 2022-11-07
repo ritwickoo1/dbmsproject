@@ -26,6 +26,12 @@
             $result = mysqli_query($this->db, $sql);
             return $result;
         }
+        public function getBookings($id){
+            $sql = "SELECT * FROM bookings where user_id = '$id'";
+            $result = mysqli_query($this->db, $sql);
+            return $result;
+        }
+        
         // public function insertAttendees($fname,$lname,$dob,$email,$contact,$speciality,$avatar_path){
         //     try{
         //         $sql = "INSERT INTO attendee (firstname, lastname, dateofbirth, emailaddress, contactnumber, speciality_id, avatar_path) 

@@ -1,10 +1,11 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><?php echo $_SESSION["username"] ?></title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
@@ -22,13 +23,16 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="login.php">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="bookedtickets.php">Ticket Booked</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="index.php">Logout</a>
+                    <a class="nav-link active" href="index.php"><?php echo $_SESSION['username']; ?></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="index.php">Logout</a>
                   </li>
                 </ul>
                 </div>

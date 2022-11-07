@@ -1,26 +1,20 @@
 <!-- use php to validate sign in information of user and head start to login.php -->
 <?php
-    session_start();
-    include 'db.php';
-    if(isset($_POST['submit'])){
-        $email = $_POST['email'];
+    include 'dbconn.php';
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $username = $_POST['username'];
         $password = $_POST['password'];
-        $sql = "SELECT * FROM user WHERE email = '$email' AND password = '$password'";
-        $result = mysqli_query($conn, $sql);
-        if(mysqli_num_rows($result) > 0){
-            while($row = mysqli_fetch_assoc($result)){
-                $_SESSION['user_id'] = $row['user_id'];
-                $_SESSION['user_name'] = $row['user_name'];
-                $_SESSION['email'] = $row['email'];
-                $_SESSION['password'] = $row['password'];
-                $_SESSION['phone'] = $row['phone'];
-                $_SESSION['city'] = $row['city'];
-                $_SESSION['address'] = $row['address'];
-                $_SESSION['image'] = $row['image'];
-                header('location: index.php');
-            }
+        $result = $userObj->getUser($username,$password);
+        if($result->num_rows > 0){
+            // if user exists
+            // start session
+            session_start();
+            $_SESSION['username'] = $username;
+            header("Location: login.php");
         }else{
-            echo '<script>alert("Invalid Email or Password")</script>';
+            // if user does not exist
+            echo '<div class = "alert alert-danger">Username or Password is Incorrect! Please try again. </div>';
+            // header("Location: index.php");
         }
     }
 ?>
@@ -41,7 +35,7 @@
     <!-- Create login form using html and css -->
     <div class="login-box">
         <h1>Login</h1>
-        <form action="login.php" method="post">
+        <form action="" method="post">
             <div class="textbox">
                 <i class="fas fa-user"></i>
                 <input type="text" placeholder="Username" name="username" value="">
@@ -51,6 +45,10 @@
                 <input type="password" placeholder="Password" name="password" value="">
             </div>
             <input class="btn" type="submit" name="submit" value="Sign in">
+        </form>
+        <!-- create form with button sign up which action to signup.php-->
+        <form action="signup.php">
+            <input class="btn" type="submit" value="Sign up">
         </form>
     </div>
 </body>

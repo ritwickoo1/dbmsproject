@@ -5,61 +5,30 @@
         {
             $this->db = $conn;
         }
-        public function insertUser($username,$password){
-            try{
-                $result = $this->getUserByUsername($username);
-                if($result['num'] > 0){
-                    return false;
-                }else{
-                    $new_password = md5($password.$username); 
-                    $sql = "INSERT INTO users (username, password) 
-                    VALUES (:username,:password)";
-                    $stmt = $this->db->prepare($sql);
-                    $stmt->bindparam(":username",$username);
-                    $stmt->bindparam(":password",$new_password);
-                    $stmt->execute();
-                    return true;
-                }
-                
-            }catch(PDOException $e){
-                echo $e->getMessage();
-                return false;
-            }
+        public function getAllCities(){
+            $sql = "SELECT * FROM city";
+            $result = mysqli_query($this->db, $sql);
+            return $result;
         }
-
         public function getUser($username, $password)
         {
-            try{
-                $sql = "SELECT * FROM users WHERE username = :username AND password = :password ";
-                $stmt = $this->db->prepare($sql);
-                $stmt->bindparam(":username",$username);
-                $stmt->bindparam(":password",$password);
-                $stmt->execute();
-                $result = $stmt->fetch();
-                return $result;
-
-            }catch(PDOException $e){
-                echo $e->getMessage();
-                return false;
-            }
+            $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+            $result = mysqli_query($this->db, $sql);
+            return $result;
         }
-
-        public function getUserByUsername($username)
-        {
-            try{
-                $sql = "SELECT count(*) as num FROM users WHERE username = :username" ;
-                $stmt = $this->db->prepare($sql);
-                $stmt->bindparam(':username',$username);
-                $stmt->execute();
-                $result = $stmt->fetch();
-                return $result;
-
-            }catch(PDOException $e){
-                echo $e->getMessage();
-                return false;
-            }
+        // Insert into bookings table $user, $eventName,$eventTime,$eventCity,$totalPaid,$image
+        public function insertBooking($user, $eventName,$eventTime,$eventCity,$totalPaid,$image){
+            $sql = "INSERT INTO bookings (username, event_name, event_time, event_city, total_paid,event_image) 
+                VALUES ('$user','$eventName','$eventTime','$eventCity','$totalPaid','$image')";
+            $result = mysqli_query($this->db, $sql);
+            return $result;
+            
         }
-        
-
+        // get bookings from bookings table
+        public function getBooking($user){
+            $sql = "SELECT * FROM bookings where username = '$user'";
+            $result = mysqli_query($this->db, $sql);
+            return $result;
+        }
     }
 ?>

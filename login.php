@@ -7,13 +7,14 @@ available shows and their timings, availability of tickets and ticket price.
 and available seats will be decremented by 1 (or no. of tickets that user books).
 -->
 <?php
-    session_start();
+    // session_start();
     require_once "dbconn.php";
     $city = $crud->getAllCities();
     $category = $crud->getAllCategories();
     $event = $crud->getAllEvents();
 ?>
 <!-- Include header using php -->
+
 <?php include "header.php" ?>
     <!-- Create carousel -->
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
@@ -48,7 +49,16 @@ and available seats will be decremented by 1 (or no. of tickets that user books)
             <!-- using while print row contain image card title and card description using event-->
             <div class="row">
               <?php
-                  while($row = $event->fetch_assoc()){
+                //   again add class container and row when 3 event printed break the row
+                  $count = 0;
+                  while($row = $event->fetch_assoc() ){
+                      $count++;
+                      if($count == 4){
+                          echo "</div><br>";
+                          echo "<div class='container'>";
+                          echo "<div class='row'>";
+                          $count = 1;
+                      }
               ?>
               
               <div class="col-sm">
@@ -57,7 +67,7 @@ and available seats will be decremented by 1 (or no. of tickets that user books)
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $row['Title']; ?></h5>
                             <p class="card-text"><?php echo $row['Description']; ?></p>
-                            <a href="booking.php?id=<?php echo $row['Show_id']; ?>" class="btn btn-primary">Book Ticket</a>
+                            <a href="booking.php?id=<?php echo $row['Show_id']; ?>" class="btn btn-primary">View Event</a>
                         </div>
                     </div>
                 </div>

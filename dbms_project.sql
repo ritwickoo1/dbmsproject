@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2022 at 06:44 PM
+-- Generation Time: Nov 07, 2022 at 07:39 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -20,6 +20,36 @@ SET time_zone = "+00:00";
 --
 -- Database: `dbms_project`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bookings`
+--
+
+CREATE TABLE `bookings` (
+  `id` int(11) NOT NULL,
+  `username` varchar(200) NOT NULL,
+  `event_name` varchar(200) NOT NULL,
+  `event_city` varchar(200) NOT NULL,
+  `total_paid` decimal(10,0) NOT NULL,
+  `event_image` text NOT NULL,
+  `event_time` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bookings`
+--
+
+INSERT INTO `bookings` (`id`, `username`, `event_name`, `event_city`, `total_paid`, `event_image`, `event_time`) VALUES
+(7, 'ritwickoo1', 'Card title', 'delhi', '1400', 'images/otw.jpg', '18:43:26'),
+(8, 'ritwickoo1', 'Card title', 'delhi', '1050', 'images/otw.jpg', '18:43:26'),
+(9, 'ritwickoo1', 'Card title', 'delhi', '2100', 'images/otw.jpg', '18:43:26'),
+(10, 'ritwickoo1', 'Card title', 'delhi', '1750', 'images/otw.jpg', '18:43:26'),
+(11, 'ritwickoo1', 'Card title', 'delhi', '1750', 'images/otw.jpg', '18:43:26'),
+(12, 'ritwickoo1', 'Card title', 'delhi', '2100', 'images/otw.jpg', '18:43:26'),
+(13, 'ritwickoo1', 'Card title', 'delhi', '3500', 'images/otw.jpg', '18:43:26'),
+(14, 'ritwickoo1', 'Card title', 'delhi', '1050', 'images/otw.jpg', '18:43:26');
 
 -- --------------------------------------------------------
 
@@ -113,9 +143,36 @@ CREATE TABLE `event_details` (
 INSERT INTO `event_details` (`id`, `City_name`, `event_category`, `event_date`, `event_time`, `total_seats`, `available_seats`, `ticket_price`, `DESCRIPTION`) VALUES
 (1, 'delhi', 'music', '2022-11-10', '18:43:26', 50, 50, '350', 'This is a show about the survival in the woods');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `email` text NOT NULL,
+  `password` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
+(1, 'ritwickoo1', 'ritwick.verma91@gmail.com', '12345'),
+(2, 'ritwickoo1', 'ritwick.verma91@gmail.com', '12345');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `bookings`
+--
+ALTER TABLE `bookings`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `category`
@@ -142,8 +199,20 @@ ALTER TABLE `event_details`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `bookings`
+--
+ALTER TABLE `bookings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -168,6 +237,12 @@ ALTER TABLE `event`
 --
 ALTER TABLE `event_details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

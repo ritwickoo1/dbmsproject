@@ -25,6 +25,6 @@
     require_once 'crud.php';
     require_once 'user.php';
     $crud = new crud($conn);
-    // $userObj = new user($pdo);
+    $userObj = new user($conn);
     // $userObj->insertUser("admin","password");
 ?>
