@@ -12,7 +12,7 @@ bookings table button, event table button, event_details table button -->
                 <a href="category.php" class="list-group-item list-group-item-action">Category</a>
                 <a href="city.php" class="list-group-item list-group-item-action">City</a>
                 <a href="bookings.php" class="list-group-item list-group-item-action">Bookings</a>
-                <a href="events.php" class="list-group-item list-group-item-action">Events</a>
+                <a href="eventadmin.php" class="list-group-item list-group-item-action">Events</a>
                 <a href="event_details.php" class="list-group-item list-group-item-action">Event Details</a>
             </div>
         </div>
