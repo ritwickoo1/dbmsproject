@@ -48,5 +48,13 @@
             $result = mysqli_query($this->db, $sql);
             return $result;    
         }
+        // decrease available seats in event_details table and also total seats in event table
+        public function decreaseAvailableSeats($id, $seats){
+            $sql = "UPDATE event_details SET available_seats = available_seats - $seats where id = $id";
+            $result = mysqli_query($this->db, $sql);
+            $sql = "UPDATE event_details SET total_seats = total_seats - $seats where id = $id";
+            $result = mysqli_query($this->db, $sql);
+            return $result;
+        }
     }
 ?>

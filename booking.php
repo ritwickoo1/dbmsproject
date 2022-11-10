@@ -20,6 +20,8 @@
         
         $result = $userObj->insertBooking($user, $eventName,$eventTime,$eventCity,$totalPaid,$image);
         if($result){
+            // decrease available tickets and total tickets in event_details table
+            $crud->decreaseAvailableSeats($id,$ticket);
             echo "<script>alert('Ticket booked successfully!')</script>";
             echo "<script>window.location = 'bookedTickets.php'</script>";
         }else{
