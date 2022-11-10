@@ -6,16 +6,18 @@ available shows and their timings, availability of tickets and ticket price.
  Once user clicks on book ticket, status field in “event ticket booked details” will change to booked
 and available seats will be decremented by 1 (or no. of tickets that user books).
 -->
+<?php include "header.php" ?>
 <?php
     // session_start();
     require_once "dbconn.php";
     $city = $crud->getAllCities();
     $category = $crud->getAllCategories();
     $event = $crud->getAllEvents();
+    
 ?>
 <!-- Include header using php -->
 
-<?php include "header.php" ?>
+
     <!-- Create carousel -->
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
   <div class="carousel-indicators">
@@ -81,17 +83,17 @@ and available seats will be decremented by 1 (or no. of tickets that user books)
     <!-- create form for user to select city from four options and once the user select the city show the category of
     events in the selected city -->
     <div class="container">
-        <form action="events.php" method="POST">
+        <!-- send city category to events.php using form -->
+        <form action="" method="POST">
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Select City</label>
+                <!-- create selection which it's value using post -->
                 <select class="form-control" id="exampleFormControlSelect1" name="city">
-                    <option value=0>Select City</option>
+                  <option value="0">Select City</option>
                     <?php
-                        // $sql = "SELECT * FROM city";
-                        // $result = mysqli_query($conn, $sql);
                         if(mysqli_num_rows($city) > 0){
-                            while($row = mysqli_fetch_assoc($city)){
-                                echo '<option value="'.$row['city_id'].'">'.$row['city_name'].'</option>';
+                            while($row = $city->fetch_assoc()){
+                              echo '<option value="'.$row['id'].'">'.$row['city_name'].'</option>';
                             }
                         }
                         
@@ -101,7 +103,7 @@ and available seats will be decremented by 1 (or no. of tickets that user books)
             <br>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Select Category</label>
-                <select class="form-control" id="exampleFormControlSelect1" name="category">
+                <select class="form-control" name="category">
                     <option value=0>Select Category</option>
                     <?php
                         if(mysqli_num_rows($category) > 0){
@@ -113,8 +115,57 @@ and available seats will be decremented by 1 (or no. of tickets that user books)
                 </select>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <!-- on clicking button it will send category and city value in by get and open events.php -->
+            <input type="submit" name="selection" class="btn btn-primary"></button>
+            <!-- send city and category to events.php page -->
         </form>
+        <?php
+            
+            if(isset($_POST['selection']) && $_POST['city'] != 0 && $_POST['category'] != 0){
+                $selectCity = $_POST['city'];
+                switch($selectCity){
+                    case 1:
+                        $selectCity = "Mumbai";
+                        break;
+                    case 2:
+                        $selectCity = "Delhi";
+                        break;
+                    case 3:
+                        $selectCity = "Bangalore";
+                        break;
+                    case 4:
+                        $selectCity = "Hyderabad";
+                        break;
+                    default:
+                        $selectCity = "Mumbai";
+                }
+                $selectCategory = $_POST['category'];
+              switch($selectCategory){
+                  case 1:
+                      $selectCategory = "Music";
+                      break;
+                  case 2:
+                      $selectCategory = "Sports";
+                      break;
+                  case 3:
+                      $selectCategory = "Theatre";
+                      break;
+                  case 4:
+                      $selectCategory = "Comedy";
+                      break;
+                  default:
+                      $selectCategory = "Music";
+              }
+                echo "<script>
+                    window.open('events.php?city=$selectCity&category=$selectCategory', '_self');
+                </script>";
+
+            }else if(isset($_POST['selection']) && $_POST['city'] == 0 && $_POST['category'] == 0){
+                echo "<script>
+                    alert('Please select city and category');
+                </script>";
+            }
+        ?>
     </div>
     <br>
     <!-- create beautiful footer using html and css -->

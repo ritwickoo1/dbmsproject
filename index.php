@@ -10,7 +10,11 @@
             // start session
             session_start();
             $_SESSION['username'] = $username;
-            header("Location: login.php");
+            if($username!='admin'){
+                
+                header('location: login.php');
+            }else
+                header("Location: admindashboard.php");
         }else{
             // if user does not exist
             echo '<div class = "alert alert-danger">Username or Password is Incorrect! Please try again. </div>';

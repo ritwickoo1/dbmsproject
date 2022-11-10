@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php
+  // check if username in session is not set then redirect to index.php
+  session_start();
+  if(!isset($_SESSION['username'])){
+      header("Location: index.php");
+  }
+
+?>
 <!-- session destroy after clicking logout button -->
 <?php if(isset($_POST['logout'])){
     session_destroy();

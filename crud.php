@@ -42,5 +42,11 @@
             $result = mysqli_query($this->db, $sql);
             return $result;
         }
+        // get events by city and category
+        public function getEventsByCityAndCategory($city, $category){
+            $sql = "SELECT * FROM event where city = '$city' and category = '$category'";
+            $result = mysqli_query($this->db, $sql);
+            return $result;    
+        }
     }
 ?>
