@@ -27,6 +27,8 @@
                     $result = mysqli_query($conn, $sql);
                     if($result){
                         echo "<script>alert('User registered successfully');</script>";
+                        // redirect to login page
+                        echo "<script>window.open('login.php', '_self');</script>";
                     }else{
                         echo "<script>alert('Error');</script>";
                     }
