@@ -1,7 +1,7 @@
 <?php
     require_once 'dbconn.php';
     if(isset($_POST['submit'])){
-        $usernme = $_POST['username'];
+        $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
         $cpassword = $_POST['cpassword'];
@@ -10,7 +10,11 @@
         // check if username already exists
         // if all are good then insert into database
         // else show error
-        if($password!= $cpassword){
+        // if any value is empty then redirect to signup.php
+        if($username == "" || $email == "" || $password == "" || $cpassword == ""){
+            header("Location: signup.php");
+        }
+        else if($password!= $cpassword){
             echo "<script>alert('Password and Confirm Password are not same');</script>";
         }else{
             $sql = "SELECT * FROM users WHERE email = '$email'";
@@ -28,7 +32,7 @@
                     if($result){
                         echo "<script>alert('User registered successfully');</script>";
                         // redirect to login page
-                        echo "<script>window.open('login.php', '_self');</script>";
+                        echo "<script>window.open('index.php', '_self');</script>";
                     }else{
                         echo "<script>alert('Error');</script>";
                     }

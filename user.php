@@ -30,5 +30,12 @@
             $result = mysqli_query($this->db, $sql);
             return $result;
         }
+        // insert user into users table
+        public function insertUser($username, $password, $email){
+            $sql = "INSERT INTO users (username, password, email) 
+                VALUES ('$username','$password','$email')";
+            $result = mysqli_query($this->db, $sql);
+            return $result;
+        }
     }
 ?>

@@ -50,5 +50,6 @@
                 </div> 
                 <?php  }} ?>
         </div> 
-</body>
-</html>
+<br>
+<br>
+<?php include "footer.php" ?>
