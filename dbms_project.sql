@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2022 at 07:39 PM
+-- Generation Time: Nov 11, 2022 at 08:24 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -103,20 +103,40 @@ CREATE TABLE `event` (
   `Show_id` int(11) NOT NULL,
   `Title` varchar(100) NOT NULL,
   `Description` varchar(500) NOT NULL,
-  `Image` text NOT NULL
+  `Image` text NOT NULL,
+  `city` varchar(200) NOT NULL,
+  `category` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`Show_id`, `Title`, `Description`, `Image`) VALUES
-(1, 'Card title', 'Some quick example text to build on the card title and make up the bulk of the card\'s content.', 'images/otw.jpg'),
-(2, 'Card title', 'Some quick example text to build on the card title and make up the bulk of the card\'s content.', 'images/cherry.jpg'),
-(3, 'Card title', 'Some quick example text to build on the card title and make up the bulk of the card\'s content.', 'images/zsjl.jpg'),
-(4, 'Card title', 'Some quick example text to build on the card title and make up the bulk of the card\'s content.', 'images/gvkpster.jpg'),
-(5, 'Card title', 'Some quick example text to build on the card title and make up the bulk of the card\'s content.', 'images/tim.jpg'),
-(6, 'Card title', 'Some quick example text to build on the card title and make up the bulk of the card\'s content.', 'images/blackwidow.jpg');
+INSERT INTO `event` (`Show_id`, `Title`, `Description`, `Image`, `city`, `category`) VALUES
+(1, 'Outside The Wire', 'In the near future, a drone pilot sent into a war zone finds himself paired with a top-secret android officer on a mission to stop a nuclear attack.', 'images/otw.jpg', 'Delhi', 'Music'),
+(2, 'Cherry', '\'Cherry\' follows the wild journey of a disenfranchised young man from Ohio who meets, Cherry drifts from college dropout to army medic in Iraq - anchored only  by his true love, Emily. But after returning from the war with PTSD, his life spirals into drugs and crime as he struggles to find his place in the world.', 'images/cherry.jpg', 'Delhi', 'Sports'),
+(3, 'Zack Snyder\'s Justice League', 'Justice League: Directed by Zack Snyder. With Ben Affleck, Henry Cavill, Amy Adams, and Gal Gadot. Fueled by his restored faith in humanity and inspired by Superman\'s selfless act, Bruce Wayne enlists the help of his new-found ally, Diana Prince, to face an even greater enemy.', 'images/zsjl.jpg', 'Delhi', 'Theatre'),
+(4, 'GodZilla vs Kong ', 'The epic next chapter in the cinematic Monsterverse pits two of the greatest icons in motion picture history against each other--the fearsome Godzilla and the mighty Kong--with humanity caught in the balance.', 'images/gvkpster.jpg', 'Delhi', 'Comedy'),
+(5, 'The Invisible Man', 'When Cecilia\'s abusive ex takes his own life and leaves her his fortune, she suspects his death was a hoax. As a series of coincidences turn lethal, Cecilia works to prove that she is being hunted by someone nobody can see.', 'images/tim.jpg', 'Mumbai', 'Music'),
+(6, 'Black Widow', 'Black Widow: Directed by Cate Shortland. With Scarlett Johansson, Florence Pugh, Rachel Weisz, David Harbour. Natasha Romanoff confronts the darker parts of her ledger when a dangerous conspiracy with ties to her past arises.', 'images/blackwidow.jpg', 'Mumbai', 'Sports'),
+(7, 'Bad Sisters', 'Follows the Garvey sisters, who are bound together by the death of their parents and a promise to always protect each other.', 'images/bad sisters.jpg', 'Mumbai', 'Comedy'),
+(8, 'Derry Girl', 'The personal exploits of a 16-year-old girl and her family and friends during the Troubles in the early 1990s.', 'images/derr.jpg', 'Mumbai', 'Theatre'),
+(9, 'Orange is the new Black', 'Orange Is the New Black: Created by Jenji Kohan. With Taylor Schilling, Kate Mulgrew, Uzo Aduba, Danielle Brooks.', 'images/orbl.jpg', 'Bangalore', 'Music'),
+(10, 'Reboot', 'Reboot: Created by Steven Levitan. With Keegan-Michael Key, Johnny Knoxville, Rachel Bloom, Calum Worthy.', 'images/Reboot.jpeg', 'Bangalore', 'Sports'),
+(11, 'Seinfeld\r\n', 'The continuing misadventures of neurotic New York City stand-up comedian Jerry Seinfeld and his equally neurotic New York City friends.\r\n', 'images/sein.jpg', 'Bangalore', 'Theatre'),
+(12, 'Shameless\r\n', 'Shameless\r\nA scrappy, feisty, fiercely loyal Chicago family makes no apologies.\r\n\r\n', 'images/sham.jpg', 'Bangalore', 'Comedy'),
+(13, 'Ted Lasso', 'American college football coach Ted Lasso heads to London to manage AFC Richmond, a struggling English Premier League football team.\r\n', 'images/tedlasso.jpg', 'Chennai', 'Music'),
+(14, 'Bridgerton', 'Bridgerton is an American historical-romance television series based on Julia Quinn\'s novels. Created by Chris Van Dusen, it is Shondaland\'s first scripted show for Netflix.', 'images/bridgerton.jpg', 'Chennai', 'Sports'),
+(15, 'College Romance\r\n', 'College Romance: With Apoorva Arora, Keshav Sadhna, Gagan Arora, Shreya Mehta. Three best friends look for love, laughs and some lifelong memories while attending college together.\r\n', 'images/collegeromance.jpg', 'Chennai', 'Comedy'),
+(16, 'New Girl', 'New Girl: Created by Elizabeth Meriwether. With Zooey Deschanel, Jake Johnson, Max Greenfield, Hannah Simone. After a bad break-up, Jess, an offbeat young woman, moves into an apartment loft with three single men.', 'images/New Girl.jpg', 'Chennai', 'Theatre'),
+(17, 'The Empress\r\n', 'The Empress is a German Netflix Original historical romantic drama series written by Katharina Eyssen and based on the early life and romance of Empress Elisabeth of Austria.', 'images/theempress.jpg', 'Delhi', 'Music'),
+(18, 'This is Us', 'This Is Us: Created by Dan Fogelman. With Milo Ventimiglia, Mandy Moore, Sterling K. Brown, Chrissy Metz. A heartwarming and emotional story about a unique set of triplets, their wonderful parents.', 'images/thisisus.jpeg', 'Delhi', 'Sports'),
+(19, 'Grey\'s Anatomy', ' Grey\'s Anatomy: Created by Shonda Rhimes. With Ellen Pompeo, Chandra Wilson, James Pickens Jr., Justin Chambers. A drama centered on the personal and professional lives of five surgical interns and their supervisors.', 'images/greysanatomy.jpg', 'Delhi', 'Theatre'),
+(20, 'All-American Basketball	Tournament', 'An All-American team is an honorary sports team composed of the best amateur players of a specific season for each team position.', 'images/basketball.jpg', 'Delhi', 'Comedy'),
+(21, 'Cricket Premier League', 'It is annually contested by ten teams based out of seven Indian cities and three Indian states. The league was founded by the Board of Control for Cricket in India (BCCI) in 2007.\r\n\r\n', 'images/cricket.jpg', 'Bangalore', 'Music'),
+(26, 'Mirzapur', 'Mirzapur is an Indian Hindi-language action crime thriller web series on Amazon Prime Video, created by Karan Anshuman, who wrote the script along with Puneet Krishna & Vineet Krishna. ', 'images/mirzapur.jpg', '', ''),
+(27, 'Outlander', 'Outlander: Created by Ronald D. Moore. With Caitríona Balfe, Sam Heughan, Sophie Skelton, Richard Rankin. An English combat nurse from 1945 is mysteriously swept back in time to 1743.\r\n', 'images/out.jpg', '', ''),
+(28, 'Panchayat', 'A comedy-drama, which captures the journey of an engineering graduate Abhishek, who for lack of a better job option joins as secretary of a Panchayat office in a remote village of Uttar Pradesh.', 'images/Panchayat.jpg', '', '');
 
 -- --------------------------------------------------------
 
@@ -141,7 +161,14 @@ CREATE TABLE `event_details` (
 --
 
 INSERT INTO `event_details` (`id`, `City_name`, `event_category`, `event_date`, `event_time`, `total_seats`, `available_seats`, `ticket_price`, `DESCRIPTION`) VALUES
-(1, 'delhi', 'music', '2022-11-10', '18:43:26', 50, 50, '350', 'This is a show about the survival in the woods');
+(1, 'Delhi', 'Music', '2022-11-10', '18:00:00', 50, 50, '350', 'In the near future, a drone pilot sent into a war zone finds himself paired with a top-secret android officer on a mission to stop a nuclear attack.'),
+(2, 'Delhi', 'Sports', '2022-11-12', '10:30:00', 110, 65, '650', '\'Cherry\' follows the wild journey of a disenfranchised young man from Ohio who meets, Cherry drifts from college dropout to army medic in Iraq - anchored only by his true love, Emily. But after returning from the war with PTSD, his life spirals into drugs and crime as he struggles to find his place in the world.'),
+(3, 'Delhi', 'Theatre', '2022-11-18', '16:45:00', 200, 100, '800', 'Justice League: Directed by Zack Snyder. With Ben Affleck, Henry Cavil, Amy Adams, and Gal Gadot. Fueled by his restored faith in humanity and inspired by Superman\'s selfless act, Bruce Wayne enlists the help of his new-found ally, Diana Prince, to face an even greater enemy.'),
+(4, 'Mumbai', 'Music', '2022-11-20', '19:30:00', 75, 50, '300', 'The epic next chapter in the cinematic Monsterverse pits two of the greatest icons in motion picture history against each other--the fearsome Godzilla and the mighty Kong--with humanity caught in the balance.'),
+(5, 'Mumbai', 'Sports', '2022-11-16', '09:30:00', 65, 20, '200', 'When Cecilia\'s abusive ex takes his own life and leaves her his fortune, she suspects his death was a hoax. As a series of coincidences turn lethal, Cecilia works to prove that she is being hunted by someone nobody can see.'),
+(6, 'Bangalore', 'Music', '2022-12-01', '12:30:00', 75, 50, '300', 'Black Widow: Directed by Cate Shortland. With Scarlett Johansson, Florence Pugh, Rachel Weisz, David Harbour. Natasha Romanoff confronts the darker parts of her ledger when a dangerous conspiracy with ties to her past arises.'),
+(7, 'Bangalore', 'Comedy', '2022-11-18', '11:30:00', 200, 50, '650', 'Plot - Follows the Garvey sisters, who are bound together by the death of their parents and a promise to always protect each other.\r\n'),
+(8, 'Chennai', 'Music', '2022-12-20', '01:00:00', 110, 20, '200', 'Plot - The personal exploits of a 16-year-old girl and her family and friends during the Troubles in the early 1990s.Derry Girls has inspired a mural of its main characters painted on the side of Badgers Bar and Restaurant at 18 Orchard Street, Derry, which has become a popular tourist attraction.\r\n');
 
 -- --------------------------------------------------------
 
@@ -230,13 +257,13 @@ ALTER TABLE `city`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `Show_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Show_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `event_details`
 --
 ALTER TABLE `event_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
