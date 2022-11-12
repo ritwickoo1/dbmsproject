@@ -7,6 +7,7 @@
     $booking = $userObj->getBooking($user);
 
 ?>
+
 <br>
 <?php if($booking->num_rows == 0){ ?>
 <!-- create a card to display if no bookings are found -->
@@ -40,7 +41,7 @@
                                     <p>Event Location: <?php echo $result['event_city'] ?></p>
                                     <p>Event Time: <?php echo $result['event_time'] ?></p>
                                     <p>Total Paid Amount: <?php echo $result['total_paid'] ?></p>
-                                    <a href="receipt.php" class="btn btn-primary">Print Receipt</a>
+                                    <a href="receipt.php?file=receipt" class="btn btn-primary">Print Receipt</a>
                                 </div>
                             </div>
                         </div>
